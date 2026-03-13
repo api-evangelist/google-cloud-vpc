@@ -1,0 +1,73 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-cloud-vpc/refs/heads/main/json-schema/json-schema.yml
+title: Google Cloud VPC Network
+description: A virtual private cloud network resource in Google Cloud
+type: object
+properties:
+  id:
+    type: string
+    description: Unique identifier for the resource
+  name:
+    type: string
+    description: Name of the VPC network
+    pattern: ^[a-z]([-a-z0-9]*[a-z0-9])?$
+  description:
+    type: string
+    description: An optional description of the VPC network
+  autoCreateSubnetworks:
+    type: boolean
+    description: >-
+      When true, the VPC network is created in auto subnet mode. When false,
+      the network is created in custom subnet mode.
+  routingConfig:
+    type: object
+    properties:
+      routingMode:
+        type: string
+        enum:
+          - REGIONAL
+          - GLOBAL
+        description: The network-wide routing mode to use
+    required:
+      - routingMode
+  subnetworks:
+    type: array
+    items:
+      type: string
+      format: uri
+    description: Server-defined URLs of the subnetworks in this VPC network
+  peerings:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the peering
+        network:
+          type: string
+          format: uri
+          description: URL of the peer network
+        state:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+        autoCreateRoutes:
+          type: boolean
+    description: List of network peerings for this VPC network
+  mtu:
+    type: integer
+    minimum: 1300
+    maximum: 8896
+    description: Maximum transmission unit in bytes
+  selfLink:
+    type: string
+    format: uri
+    description: Server-defined URL for the resource
+  creationTimestamp:
+    type: string
+    format: date-time
+    description: Timestamp when the resource was created
+required:
+  - name

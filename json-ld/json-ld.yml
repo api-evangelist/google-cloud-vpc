@@ -1,0 +1,35 @@
+"@context":
+  "@vocab": https://schema.org/
+  gcp: https://cloud.google.com/vpc/docs/reference/rest/v1/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  Network:
+    "@id": gcp:networks
+    "@type": "@id"
+  name:
+    "@id": schema:name
+    "@type": xsd:string
+  description:
+    "@id": schema:description
+    "@type": xsd:string
+  autoCreateSubnetworks:
+    "@id": gcp:autoCreateSubnetworks
+    "@type": xsd:boolean
+  routingMode:
+    "@id": gcp:routingMode
+    "@type": xsd:string
+  subnetworks:
+    "@id": gcp:subnetworks
+    "@container": "@set"
+  peerings:
+    "@id": gcp:peerings
+    "@container": "@set"
+  mtu:
+    "@id": gcp:mtu
+    "@type": xsd:integer
+  dateCreated:
+    "@id": dcterms:created
+    "@type": xsd:dateTime
+  dateModified:
+    "@id": dcterms:modified
+    "@type": xsd:dateTime
