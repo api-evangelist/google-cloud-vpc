@@ -10,11 +10,11 @@ created: '2026-03-13'
 modified: '2026-03-13'
 specificationVersion: '0.18'
 tags:
-  - VPC
+  - Firewall
+  - Google Cloud
   - Networking
   - Virtual Networks
-  - Google Cloud
-  - Firewall
+  - VPC
 apis:
   - name: Google Cloud VPC API
     description: >-
@@ -25,10 +25,10 @@ apis:
     humanURL: https://cloud.google.com/vpc/docs
     baseURL: https://compute.googleapis.com/compute/v1
     tags:
-      - VPC
+      - Firewall Rules
       - Networks
       - Subnets
-      - Firewall Rules
+      - VPC
     properties:
       - type: OpenAPI
         url: openapi/openapi.yml

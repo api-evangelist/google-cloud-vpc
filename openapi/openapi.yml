@@ -12,14 +12,14 @@ servers:
   - url: https://compute.googleapis.com/compute/v1
     description: Google Cloud VPC production endpoint
 tags:
-  - name: Networks
-    description: Manage VPC networks
-  - name: Subnetworks
-    description: Manage subnetworks within VPC networks
   - name: Firewalls
     description: Manage firewall rules for VPC networks
+  - name: Networks
+    description: Manage VPC networks
   - name: Routes
     description: Manage routes for VPC networks
+  - name: Subnetworks
+    description: Manage subnetworks within VPC networks
 paths:
   /projects/{project}/global/networks:
     get:
