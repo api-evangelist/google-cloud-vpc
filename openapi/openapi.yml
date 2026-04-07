@@ -24,7 +24,7 @@ paths:
   /projects/{project}/global/networks:
     get:
       operationId: listNetworks
-      summary: List VPC networks
+      summary: Google Cloud VPC List VPC networks
       description: Retrieves the list of VPC networks available to the specified project.
       tags:
         - Networks
@@ -43,7 +43,7 @@ paths:
                 $ref: '#/components/schemas/NetworkList'
     post:
       operationId: createNetwork
-      summary: Create a VPC network
+      summary: Google Cloud VPC Create a VPC network
       description: Creates a VPC network in the specified project.
       tags:
         - Networks
@@ -69,7 +69,7 @@ paths:
   /projects/{project}/global/networks/{network}:
     get:
       operationId: getNetwork
-      summary: Get a VPC network
+      summary: Google Cloud VPC Get a VPC network
       description: Returns the specified VPC network resource.
       tags:
         - Networks
@@ -93,7 +93,7 @@ paths:
                 $ref: '#/components/schemas/Network'
     delete:
       operationId: deleteNetwork
-      summary: Delete a VPC network
+      summary: Google Cloud VPC Delete a VPC network
       description: Deletes the specified VPC network.
       tags:
         - Networks
@@ -118,7 +118,7 @@ paths:
   /projects/{project}/regions/{region}/subnetworks:
     get:
       operationId: listSubnetworks
-      summary: List subnetworks
+      summary: Google Cloud VPC List subnetworks
       description: Retrieves the list of subnetworks available in the specified region.
       tags:
         - Subnetworks
@@ -143,7 +143,7 @@ paths:
   /projects/{project}/global/firewalls:
     get:
       operationId: listFirewalls
-      summary: List firewall rules
+      summary: Google Cloud VPC List firewall rules
       description: Retrieves the list of firewall rules available to the specified project.
       tags:
         - Firewalls
@@ -163,7 +163,7 @@ paths:
   /projects/{project}/global/routes:
     get:
       operationId: listRoutes
-      summary: List routes
+      summary: Google Cloud VPC List routes
       description: Retrieves the list of routes available to the specified project.
       tags:
         - Routes
