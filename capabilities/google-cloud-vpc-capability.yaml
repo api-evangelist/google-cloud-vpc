@@ -1,0 +1,377 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud VPC API
+  description: Provides programmatic access to manage virtual private cloud networks, subnets, firewall rules, routes, and
+    peering connections within Google Cloud.
+  tags:
+  - Google
+  - Cloud
+  - Vpc
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: google-cloud-vpc
+    baseUri: https://compute.googleapis.com/compute/v1
+    description: Google Cloud VPC API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{GOOGLE_CLOUD_VPC_TOKEN}}'
+    resources:
+    - name: projects-project-global-networks
+      path: /projects/{project}/global/networks
+      operations:
+      - name: listnetworks
+        method: GET
+        description: Google Cloud VPC List VPC networks
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createnetwork
+        method: POST
+        description: Google Cloud VPC Create a VPC network
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-global-networks-network
+      path: /projects/{project}/global/networks/{network}
+      operations:
+      - name: getnetwork
+        method: GET
+        description: Google Cloud VPC Get a VPC network
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: network
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletenetwork
+        method: DELETE
+        description: Google Cloud VPC Delete a VPC network
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: network
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-regions-region-subnetworks
+      path: /projects/{project}/regions/{region}/subnetworks
+      operations:
+      - name: listsubnetworks
+        method: GET
+        description: Google Cloud VPC List subnetworks
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: region
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-global-firewalls
+      path: /projects/{project}/global/firewalls
+      operations:
+      - name: listfirewalls
+        method: GET
+        description: Google Cloud VPC List firewall rules
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-global-routes
+      path: /projects/{project}/global/routes
+      operations:
+      - name: listroutes
+        method: GET
+        description: Google Cloud VPC List routes
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: google-cloud-vpc-rest
+    description: REST adapter for Google Cloud VPC API.
+    resources:
+    - path: /projects/{project}/global/networks
+      name: listnetworks
+      operations:
+      - method: GET
+        name: listnetworks
+        description: Google Cloud VPC List VPC networks
+        call: google-cloud-vpc.listnetworks
+        with:
+          project: rest.project
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/global/networks
+      name: createnetwork
+      operations:
+      - method: POST
+        name: createnetwork
+        description: Google Cloud VPC Create a VPC network
+        call: google-cloud-vpc.createnetwork
+        with:
+          project: rest.project
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/global/networks/{network}
+      name: getnetwork
+      operations:
+      - method: GET
+        name: getnetwork
+        description: Google Cloud VPC Get a VPC network
+        call: google-cloud-vpc.getnetwork
+        with:
+          project: rest.project
+          network: rest.network
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/global/networks/{network}
+      name: deletenetwork
+      operations:
+      - method: DELETE
+        name: deletenetwork
+        description: Google Cloud VPC Delete a VPC network
+        call: google-cloud-vpc.deletenetwork
+        with:
+          project: rest.project
+          network: rest.network
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/regions/{region}/subnetworks
+      name: listsubnetworks
+      operations:
+      - method: GET
+        name: listsubnetworks
+        description: Google Cloud VPC List subnetworks
+        call: google-cloud-vpc.listsubnetworks
+        with:
+          project: rest.project
+          region: rest.region
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/global/firewalls
+      name: listfirewalls
+      operations:
+      - method: GET
+        name: listfirewalls
+        description: Google Cloud VPC List firewall rules
+        call: google-cloud-vpc.listfirewalls
+        with:
+          project: rest.project
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/global/routes
+      name: listroutes
+      operations:
+      - method: GET
+        name: listroutes
+        description: Google Cloud VPC List routes
+        call: google-cloud-vpc.listroutes
+        with:
+          project: rest.project
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: google-cloud-vpc-mcp
+    transport: http
+    description: MCP adapter for Google Cloud VPC API for AI agent use.
+    tools:
+    - name: listnetworks
+      description: Google Cloud VPC List VPC networks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-vpc.listnetworks
+      with:
+        project: tools.project
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createnetwork
+      description: Google Cloud VPC Create a VPC network
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-vpc.createnetwork
+      with:
+        project: tools.project
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getnetwork
+      description: Google Cloud VPC Get a VPC network
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-vpc.getnetwork
+      with:
+        project: tools.project
+        network: tools.network
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: network
+        type: string
+        description: network
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletenetwork
+      description: Google Cloud VPC Delete a VPC network
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: google-cloud-vpc.deletenetwork
+      with:
+        project: tools.project
+        network: tools.network
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: network
+        type: string
+        description: network
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listsubnetworks
+      description: Google Cloud VPC List subnetworks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-vpc.listsubnetworks
+      with:
+        project: tools.project
+        region: tools.region
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: region
+        type: string
+        description: region
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listfirewalls
+      description: Google Cloud VPC List firewall rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-vpc.listfirewalls
+      with:
+        project: tools.project
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listroutes
+      description: Google Cloud VPC List routes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-vpc.listroutes
+      with:
+        project: tools.project
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_VPC_TOKEN: GOOGLE_CLOUD_VPC_TOKEN
