@@ -43,6 +43,10 @@ common:
     url: https://cloud.google.com/vpc/network-pricing
   - type: JSONLDContext
     url: json-ld/json-ld.yml
+  - type: Integrations
+    url: https://cloud.google.com/marketplace
+integrations:
+  - name: Become a Partner
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
