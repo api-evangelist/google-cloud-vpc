@@ -2,26 +2,20 @@
 
 Google Cloud Virtual Private Cloud (VPC) provides networking functionality for Google Cloud resources, enabling you to create and manage virtual networks, subnets, firewall rules, and routes for secure and isolated cloud networking.
 
-**URL:** [https://raw.githubusercontent.com/api-evangelist/google-cloud-vpc/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/google-cloud-vpc/refs/heads/main/apis.yml)
-
-## Scope
-
-- **Type:** Contract
-- **Position:** Consuming
-- **Access:** 3rd-Party
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/google-cloud-vpc/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/google-cloud-vpc/refs/heads/main/apis.yml)
 
 ## Tags
 
-- VPC
+- Firewall
+- Google Cloud
 - Networking
 - Virtual Networks
-- Google Cloud
-- Firewall
+- VPC
 
 ## Timestamps
 
 - **Created:** 2026-03-13
-- **Modified:** 2026-04-28
+- **Modified:** 2026-05-19
 
 ## APIs
 
@@ -29,29 +23,33 @@ Google Cloud Virtual Private Cloud (VPC) provides networking functionality for G
 
 The Google Cloud VPC API enables programmatic management of virtual networks, subnets, firewall rules, routes, and peering connections within Google Cloud Platform.
 
-**Human URL:** [https://cloud.google.com/vpc/docs](https://cloud.google.com/vpc/docs)
-**Base URL:** https://compute.googleapis.com/compute/v1
-
-#### Properties
-
-- [OpenAPI](openapi/openapi.yml)
-- [JSON Schema](json-schema/json-schema.yml)
-- [JSON-LD Context](json-ld/json-ld.yml)
+- **Human URL:** [https://cloud.google.com/vpc/docs](https://cloud.google.com/vpc/docs)
+- **Base URL:** `https://compute.googleapis.com/compute/v1`
 
 #### Tags
 
-- VPC
+- Firewall Rules
 - Networks
 - Subnets
-- Firewall Rules
+- VPC
+
+#### Properties
+
+- [OpenAPI](openapi/openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/openapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/openapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/json-schema.yml) — [JSON Schema](https://json-schema.org/specification)
+- [J S O N L D Context](json-ld/json-ld.yml)
 
 ## Common Properties
 
+- [GitHub Organization](https://github.com/googleapis)
 - [Getting Started](https://cloud.google.com/vpc/docs/overview)
 - [Pricing](https://cloud.google.com/vpc/network-pricing)
-- [JSON-LD Context](json-ld/json-ld.yml)
+- [J S O N L D Context](json-ld/json-ld.yml)
+- [Integrations](https://cloud.google.com/marketplace)
 
 ## Maintainers
 
-- **FN:** API Evangelist
-- **Email:** info@apievangelist.com
+**FN:** Kin Lane
+**Email:** kin@apievangelist.com
