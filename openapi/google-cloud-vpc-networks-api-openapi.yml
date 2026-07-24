@@ -1,0 +1,173 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud VPC Firewalls Networks API
+  description: Provides programmatic access to manage virtual private cloud networks, subnets, firewall rules, routes, and peering connections within Google Cloud.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/vpc/docs
+servers:
+- url: https://compute.googleapis.com/compute/v1
+  description: Google Cloud VPC production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/compute
+tags:
+- name: Networks
+  description: Manage VPC networks
+paths:
+  /projects/{project}/global/networks:
+    get:
+      operationId: listNetworks
+      summary: Google Cloud VPC List VPC networks
+      description: Retrieves the list of VPC networks available to the specified project.
+      tags:
+      - Networks
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkList'
+    post:
+      operationId: createNetwork
+      summary: Google Cloud VPC Create a VPC network
+      description: Creates a VPC network in the specified project.
+      tags:
+      - Networks
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Network'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{project}/global/networks/{network}:
+    get:
+      operationId: getNetwork
+      summary: Google Cloud VPC Get a VPC network
+      description: Returns the specified VPC network resource.
+      tags:
+      - Networks
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: network
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Network'
+    delete:
+      operationId: deleteNetwork
+      summary: Google Cloud VPC Delete a VPC network
+      description: Deletes the specified VPC network.
+      tags:
+      - Networks
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: network
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+components:
+  schemas:
+    Network:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the resource
+        name:
+          type: string
+          description: Name of the VPC network
+        description:
+          type: string
+          description: An optional description of the network
+        autoCreateSubnetworks:
+          type: boolean
+          description: Whether subnets are created automatically
+        routingConfig:
+          type: object
+          properties:
+            routingMode:
+              type: string
+              enum:
+              - REGIONAL
+              - GLOBAL
+        subnetworks:
+          type: array
+          items:
+            type: string
+          description: URLs of the subnetworks in this network
+        selfLink:
+          type: string
+          description: Server-defined URL for the resource
+    Operation:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        targetLink:
+          type: string
+    NetworkList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Network'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/compute: Manage your Google Compute Engine resources
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud Platform resources

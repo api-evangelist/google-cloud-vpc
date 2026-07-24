@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud VPC Firewalls Routes API
+  description: Provides programmatic access to manage virtual private cloud networks, subnets, firewall rules, routes, and peering connections within Google Cloud.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/vpc/docs
+servers:
+- url: https://compute.googleapis.com/compute/v1
+  description: Google Cloud VPC production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/compute
+tags:
+- name: Routes
+  description: Manage routes for VPC networks
+paths:
+  /projects/{project}/global/routes:
+    get:
+      operationId: listRoutes
+      summary: Google Cloud VPC List routes
+      description: Retrieves the list of routes available to the specified project.
+      tags:
+      - Routes
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RouteList'
+components:
+  schemas:
+    RouteList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/compute: Manage your Google Compute Engine resources
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud Platform resources
