@@ -2,7 +2,20 @@ name: Google Cloud VPC
 description: >-
   Google Cloud Virtual Private Cloud (VPC) provides networking functionality for Google Cloud resources, enabling you to
   create and manage virtual networks, subnets, firewall rules, and routes for secure and isolated cloud networking.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-cloud-vpc.png
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-vpc/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -14,25 +27,62 @@ tags:
   - Virtual Networks
   - VPC
 apis:
-  - name: Google Cloud VPC API
-    description: >-
-      The Google Cloud VPC API enables programmatic management of virtual networks, subnets, firewall rules, routes, and
-      peering connections within Google Cloud Platform.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://cloud.google.com/vpc/docs
-    baseURL: https://compute.googleapis.com/compute/v1
-    tags:
-      - Firewall Rules
-      - Networks
-      - Subnets
-      - VPC
-    properties:
-      - type: OpenAPI
-        url: openapi/openapi.yml
-      - type: JSONSchema
-        url: json-schema/json-schema.yml
-      - type: JSONLDContext
-        url: json-ld/json-ld.yml
+- aid: google-cloud-vpc:google-cloud-vpc-firewalls-api
+  name: Google Cloud VPC Firewalls API
+  description: Manage firewall rules for VPC networks
+  humanURL: https://cloud.google.com/vpc/docs
+  baseURL: https://compute.googleapis.com/compute/v1
+  tags:
+  - Firewalls
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-vpc-firewalls-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/json-schema.yml
+  - type: JSONLDContext
+    url: json-ld/json-ld.yml
+- aid: google-cloud-vpc:google-cloud-vpc-networks-api
+  name: Google Cloud VPC Networks API
+  description: Manage VPC networks
+  humanURL: https://cloud.google.com/vpc/docs
+  baseURL: https://compute.googleapis.com/compute/v1
+  tags:
+  - Networks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-vpc-networks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/json-schema.yml
+  - type: JSONLDContext
+    url: json-ld/json-ld.yml
+- aid: google-cloud-vpc:google-cloud-vpc-routes-api
+  name: Google Cloud VPC Routes API
+  description: Manage routes for VPC networks
+  humanURL: https://cloud.google.com/vpc/docs
+  baseURL: https://compute.googleapis.com/compute/v1
+  tags:
+  - Routes
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-vpc-routes-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/json-schema.yml
+  - type: JSONLDContext
+    url: json-ld/json-ld.yml
+- aid: google-cloud-vpc:google-cloud-vpc-subnetworks-api
+  name: Google Cloud VPC Subnetworks API
+  description: Manage subnetworks within VPC networks
+  humanURL: https://cloud.google.com/vpc/docs
+  baseURL: https://compute.googleapis.com/compute/v1
+  tags:
+  - Subnetworks
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-vpc-subnetworks-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/json-schema.yml
+  - type: JSONLDContext
+    url: json-ld/json-ld.yml
 common:
   - type: AgenticAccess
     url: agentic-access/google-cloud-vpc-agentic-access.yml
