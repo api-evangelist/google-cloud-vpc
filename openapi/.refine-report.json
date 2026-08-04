@@ -1,0 +1,20 @@
+{
+  "provider": "google-cloud-vpc",
+  "sources": [
+    "google-cloud-vpc-firewalls-api-openapi.yml",
+    "google-cloud-vpc-networks-api-openapi.yml",
+    "google-cloud-vpc-routes-api-openapi.yml",
+    "google-cloud-vpc-subnetworks-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-vpc-firewalls-api-openapi.yml",
+    "google-cloud-vpc-networks-api-openapi.yml",
+    "google-cloud-vpc-routes-api-openapi.yml",
+    "google-cloud-vpc-subnetworks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
