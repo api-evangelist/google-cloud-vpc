@@ -1,0 +1,33 @@
+slug: google-cloud-vpc
+provider: Google Cloud VPC
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Networks
+  spec_file: google-cloud-vpc-networks-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: POST /projects/{project}/global/networks  createNetwork  Google Cloud VPC Create a VPC network
+  reason: Full lifecycle management of virtual private cloud networks — squarely cloud/network infrastructure
+    management for the enterprise IT estate, not carrier network operations.
+- tag: Subnetworks
+  spec_file: google-cloud-vpc-subnetworks-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET /projects/{project}/regions/{region}/subnetworks  listSubnetworks  Google Cloud VPC List
+    subnetworks
+  reason: Subnet inventory within virtual private cloud networks — cloud network infrastructure management.
