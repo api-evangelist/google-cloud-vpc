@@ -2,6 +2,18 @@ name: Google Cloud VPC
 description: >-
   Google Cloud Virtual Private Cloud (VPC) provides networking functionality for Google Cloud resources, enabling you to
   create and manage virtual networks, subnets, firewall rules, and routes for secure and isolated cloud networking.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
