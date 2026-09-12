@@ -96,6 +96,8 @@ apis:
   - type: JSONLDContext
     url: json-ld/json-ld.yml
 common:
+  - type: Website
+    url: https://www.google.com/
   - type: CapabilityMap
     url: capabilities/google-cloud-vpc-capability-edges.yml
     name: Google Cloud VPC Business Capability Map
@@ -126,3 +128,5 @@ integrations:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-parent: google-cloud-platform
+x-relationship: product
