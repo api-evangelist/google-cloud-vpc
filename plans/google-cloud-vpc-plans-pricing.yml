@@ -1,151 +1,180 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Google Cloud VPC
-providerId: google-cloud-vpc
-created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
-tags:
-  - Firewall
-  - Google Cloud
-  - Networking
-  - Virtual Networks
-  - VPC
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://cloud.google.com/vpc/network-pricing
+sources:
+- https://cloud.google.com/vpc/network-pricing
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+published: true
+note: Extensive Google Cloud networking pricing page covering VPC data transfer, IP addresses, Private
+  Service Connect, load balancing, Cloud Armor, Cloud IDS, and Cloud CDN. Only a representative subset
+  of the many per-region/per-tier rates is captured; page also says 'Contact sales for pricing beyond
+  500 TiB (512000 GiB)' for Standard Tier and volume discounts for Cloud CDN above 500 TiB/month.
+plan_count: 23
+currency: USD
 plans:
-  - id: google-cloud-vpc-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Google Cloud VPC API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://compute.googleapis.com/compute/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://compute.googleapis.com/compute/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Google Cloud VPC API
-  - id: google-cloud-vpc-pro
-    name: Professional
-    type: paid
-    description: Production tier for Google Cloud VPC. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://compute.googleapis.com/compute/v1
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://compute.googleapis.com/compute/v1
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://compute.googleapis.com/compute/v1
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Google Cloud VPC API
-  - id: google-cloud-vpc-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Google Cloud VPC. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://compute.googleapis.com/compute/v1
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://compute.googleapis.com/compute/v1
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Google Cloud VPC API
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- name: Inter-zone VM-to-VM data transfer (same region)
+  price_text: $0.01
+  price: 0.01
+  currency: USD
+  period: month
+  unit: per GiB
+  included_quota: 'Data transfer to the same Google Cloud zone using internal IPv4/IPv6 within same VPC:
+    No charge'
+- name: Premium Tier internet data transfer out to North America (1 GiB to 1,024 GiB)
+  price_text: $0.12 / 1 gibibyte, per 1 month / account
+  price: 0.12
+  currency: USD
+  period: month
+  unit: 1 gibibyte
+  included_quota: 0 gibibyte to 1 gibibyte $0.00 (Free)
+  overage: 1,024 gibibyte to 10,240 gibibyte $0.11; 10,240 gibibyte and above $0.08
+- name: Standard Tier data transfer out (200 GiB to 10,240 GiB)
+  price_text: $0.085 / 1 gibibyte, per 1 month / account
+  price: 0.085
+  currency: USD
+  period: month
+  unit: 1 gibibyte
+  included_quota: First 200 GiB per month free (per account, across all regions)
+  overage: 10,240 to 153,600 GiB $0.065; 153,600 GiB and above $0.045
+- name: Static IP address (assigned but unused)
+  price_text: $0.01 / 1 hour, per 1 month / account
+  price: 0.01
+  currency: USD
+  period: month
+  unit: 1 hour
+  included_quota: Free Tier for 0 hour to 1 hour, per 1 month per account
+- name: Static and ephemeral IP addresses in use on standard VM instances
+  price_text: $0.005 / 1 hour, per 1 month / account
+  price: 0.005
+  currency: USD
+  period: month
+  unit: 1 hour
+  included_quota: one hour per month per account free
+- name: Private Service Connect endpoint (forwarding rule)
+  price_text: $0.01 / 1 hour
+  price: 0.01
+  currency: USD
+  period: per-use
+  unit: 1 hour
+- name: PSC consumer data processing (0 to 1 PiB)
+  price_text: $0.01 / 1 gibibyte, per 1 month / account
+  price: 0.01
+  currency: USD
+  period: month
+  unit: 1 gibibyte
+  overage: 1 to 5 PiB $0.006; 5 PiB and above $0.004
+- name: Network telemetry logs (VPC Flow Logs, Firewall Rules Logging, Cloud NAT logging) 0-10,240 GiB
+  price_text: $0.25
+  price: 0.25
+  currency: USD
+  period: month
+  unit: per GiB
+  overage: 10,240-30,720 GiB $0.15; 30,720-51,200 GiB $0.075; above $0.05
+- name: Packet Mirroring inbound data processed by load balancer
+  price_text: $0.008 / 1 gibibyte
+  price: 0.008
+  currency: USD
+  period: per-use
+  unit: 1 gibibyte
+- name: Cloud Load Balancing forwarding rules (first 5)
+  price_text: $0.025 / 1 hour
+  price: 0.025
+  currency: USD
+  period: per-use
+  unit: 1 hour
+  included_quota: First 5 forwarding rules
+  overage: Per additional forwarding rule $0.01 / 1 hour
+- name: Load balancer data processed (inbound/outbound)
+  price_text: $0.008 / 1 gibibyte
+  price: 0.008
+  currency: USD
+  period: per-use
+  unit: 1 gibibyte
+- name: Internal Application Load Balancer per proxy instance
+  price_text: $0.025 / 1 hour
+  price: 0.025
+  currency: USD
+  period: per-use
+  unit: 1 hour
+  included_quota: minimum three proxy instances per load balancer
+- name: Authorization policy - External ALB data processing
+  price_text: $0.75 per million Requests
+  price: 0.75
+  currency: USD
+  period: per-use
+  unit: million requests
+- name: Authorization policy - Internal ALB data processing
+  price_text: $0.60 per million Requests
+  price: 0.6
+  currency: USD
+  period: per-use
+  unit: million requests
+- name: Authz rules fee
+  price_text: $1 per rule per month
+  price: 1
+  currency: USD
+  period: month
+  unit: rule
+- name: Authz policies fee
+  price_text: $5 per policy per month
+  price: 5
+  currency: USD
+  period: month
+  unit: policy
+- name: Self-managed TLS certificate connections
+  price_text: $0.45 / 1,000,000 count
+  price: 0.45
+  currency: USD
+  period: per-use
+  unit: 1,000,000 connections
+- name: Cloud Armor Enterprise Paygo
+  price_text: $200/month
+  price: 200
+  currency: USD
+  period: month
+  unit: subscription
+  included_quota: Includes up to 2 protected resources
+  overage: $200/protected resource per month after initial 2
+- name: Cloud Armor Enterprise Annual
+  price_text: $3,000/month
+  price: 3000
+  currency: USD
+  period: month
+  unit: subscription
+  included_quota: Includes up to 100 protected resources across all projects
+  overage: $30/protected resource per month after initial 100
+- name: Cloud IDS endpoint
+  price_text: $1.50 / 1 hour
+  price: 1.5
+  currency: USD
+  period: per-use
+  unit: 1 hour per endpoint
+  overage: Per GiB processed $0.07 / 1 gigabyte
+- name: Cloud CDN cache lookup requests
+  price_text: $0.0075 / 10,000 count
+  price: 0.0075
+  currency: USD
+  period: per-use
+  unit: 10,000 requests
+- name: Cloud CDN cache data transfer out
+  price_text: $0.02-$0.20 per GiB
+  currency: USD
+  period: per-use
+  unit: per GiB
+- name: Cloud CDN cache fill
+  price_text: $0.01-$0.04 per GiB
+  currency: USD
+  period: per-use
+  unit: per GiB
+rate_limit_statements:
+- Each proxy instance can handle up to 18 MB per second
+- 600 (HTTP) or 150 (HTTPS) new connections per second
+- 3,000 active connections
+- 1,400 requests per second*
+- You are only charged for the first 666,666,667 requests per month per account
