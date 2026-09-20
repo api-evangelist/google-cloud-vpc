@@ -96,6 +96,8 @@ apis:
   - type: JSONLDContext
     url: json-ld/json-ld.yml
 common:
+  - type: RateLimits
+    url: rate-limits/google-cloud-vpc-rate-limits.yml
   - type: Plans
     url: plans/google-cloud-vpc-plans-pricing.yml
   - type: Website
