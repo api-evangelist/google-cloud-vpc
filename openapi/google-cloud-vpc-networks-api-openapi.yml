@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud VPC Firewalls Networks API
+  title: Google Cloud VPC Networks API
   description: Provides programmatic access to manage virtual private cloud networks, subnets, firewall rules, routes, and peering connections within Google Cloud.
   version: v1
   contact:
@@ -112,6 +112,13 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
+    NetworkList:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Network'
     Operation:
       type: object
       properties:
@@ -154,13 +161,6 @@ components:
         selfLink:
           type: string
           description: Server-defined URL for the resource
-    NetworkList:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Network'
   securitySchemes:
     oauth2:
       type: oauth2

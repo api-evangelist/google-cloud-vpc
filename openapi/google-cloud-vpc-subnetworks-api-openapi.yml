@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud VPC Firewalls Subnetworks API
+  title: Google Cloud VPC Subnetworks API
   description: Provides programmatic access to manage virtual private cloud networks, subnets, firewall rules, routes, and peering connections within Google Cloud.
   version: v1
   contact:
