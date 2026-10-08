@@ -96,6 +96,8 @@ apis:
   - type: JSONLDContext
     url: json-ld/json-ld.yml
 common:
+  - type: FinOps
+    url: finops/google-cloud-vpc-finops.yml
   - type: RateLimits
     url: rate-limits/google-cloud-vpc-rate-limits.yml
   - type: Plans
