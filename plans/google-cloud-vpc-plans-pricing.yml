@@ -182,3 +182,200 @@ rate_limit_statements:
 - 3,000 active connections
 - 1,400 requests per second*
 - You are only charged for the first 666,666,667 requests per month per account
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - metered
+  - subscription
+  units:
+  - compute
+  - data
+  - period
+  - request
+  plans:
+  - name: Inter-zone VM-to-VM data transfer (same region)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Premium Tier internet data transfer out to North America (1 GiB to 1,024 GiB)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Standard Tier data transfer out (200 GiB to 10,240 GiB)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Static IP address (assigned but unused)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - month
+  - name: Static and ephemeral IP addresses in use on standard VM instances
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - month
+  - name: Private Service Connect endpoint (forwarding rule)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: PSC consumer data processing (0 to 1 PiB)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Network telemetry logs (VPC Flow Logs, Firewall Rules Logging, Cloud NAT logging
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Packet Mirroring inbound data processed by load balancer
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Cloud Load Balancing forwarding rules (first 5)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: Load balancer data processed (inbound/outbound)
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Internal Application Load Balancer per proxy instance
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: Authorization policy - External ALB data processing
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Authorization policy - Internal ALB data processing
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Authz rules fee
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Authz policies fee
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Self-managed TLS certificate connections
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - other
+  - name: Cloud Armor Enterprise Paygo
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: Cloud Armor Enterprise Annual
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - period
+    periods:
+    - month
+  - name: Cloud IDS endpoint
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: Cloud CDN cache lookup requests
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Cloud CDN cache data transfer out
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Cloud CDN cache fill
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
